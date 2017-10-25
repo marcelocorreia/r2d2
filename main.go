@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 	"github.com/daviddengcn/go-colortext"
+	"github.com/marcelocorreia/r2d2/converter"
 	"gopkg.in/alecthomas/kingpin.v2"
 	"os"
 	"os/signal"
 	"syscall"
-	"github.com/marcelocorreia/r2d2/converter"
 )
 
 var (
@@ -30,16 +30,16 @@ func main() {
 	}
 }
 
-func convertIt(convertType string){
+func convertIt(convertType string) {
 	switch convertType {
 	case "json2hcl":
 		println("converting")
-		tf:= converter.TFVarsManager{}
+		tf := converter.TFVarsManager{}
 		tf.ToHCL()
 
 	case "hcl2json":
 		println("converting")
-		tf:= converter.TFVarsManager{}
+		tf := converter.TFVarsManager{}
 		tf.ToJSON()
 
 	}

@@ -1,25 +1,24 @@
 package converter
 
 import (
-	"io/ioutil"
-	"os"
+	"encoding/json"
 	"fmt"
 	"github.com/hashicorp/hcl"
-	"encoding/json"
 	"github.com/hashicorp/hcl/hcl/printer"
 	jsonParser "github.com/hashicorp/hcl/json/parser"
+	"io/ioutil"
+	"os"
 )
 
 type TFVars interface {
-	ToJson()error
-	ToHCL()error
+	ToJson() error
+	ToHCL() error
 }
 
 type TFVarsManager struct {
-
 }
 
-func (tfg TFVarsManager)ToJSON() error {
+func (tfg TFVarsManager) ToJSON() error {
 	input, err := ioutil.ReadAll(os.Stdin)
 	if err != nil {
 		return fmt.Errorf("unable to read from stdin: %s", err)
@@ -41,7 +40,7 @@ func (tfg TFVarsManager)ToJSON() error {
 	return nil
 }
 
-func (tfg TFVarsManager)ToHCL() error {
+func (tfg TFVarsManager) ToHCL() error {
 	input, err := ioutil.ReadAll(os.Stdin)
 	if err != nil {
 		return fmt.Errorf("unable to read from stdin: %s", err)
